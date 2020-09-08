@@ -6,10 +6,14 @@ goog.require('goog.dom');
 goog.require('reagent.core');
 goog.require('reagent.dom');
 goog.require('erdos.unicode.data');
-erdos.unicode.core.get_app_element = (function erdos$unicode$core$get_app_element(){
-return goog.dom.getElement("app");
-});
 erdos.unicode.core.input_text = reagent.core.atom.cljs$core$IFn$_invoke$arity$1("Hello Am\u00E9lie!");
+cljs.core.add_watch(erdos.unicode.core.input_text,cljs.core.cst$kw$reload,(function (_,___$1,old,neu){
+if(cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(old,neu)){
+return (window.location.hash = ["text=",cljs.core.str.cljs$core$IFn$_invoke$arity$1(encodeURIComponent(cljs.core.str.cljs$core$IFn$_invoke$arity$1(neu)))].join(''));
+} else {
+return null;
+}
+}));
 erdos.unicode.core.normalized_state = reagent.core.track((function (){
 var nfc = cljs.core.deref(erdos.unicode.core.input_text).normalize("NFC");
 var nfd = cljs.core.deref(erdos.unicode.core.input_text).normalize("NFD");
@@ -20,7 +24,7 @@ return new cljs.core.PersistentArrayMap(null, 8, [cljs.core.cst$kw$nfc_QMARK_,cl
 erdos.unicode.core.textarea = (function erdos$unicode$core$textarea(input_text){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$textarea,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$on_DASH_change,(function (t){
 return cljs.core.reset_BANG_(input_text,t.target.value);
-}),cljs.core.cst$kw$default_DASH_value,cljs.core.deref(input_text)], null)], null);
+}),cljs.core.cst$kw$value,cljs.core.deref(input_text)], null)], null);
 });
 erdos.unicode.core.char__GT_hex = (function erdos$unicode$core$char__GT_hex(c){
 return ["0x",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.str.cljs$core$IFn$_invoke$arity$1(c).charCodeAt((0)).toString((16)).toUpperCase().padStart((4),"0"))].join('');
@@ -154,15 +158,25 @@ erdos.unicode.core.mount = (function erdos$unicode$core$mount(el){
 return reagent.dom.render.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [erdos.unicode.core.hello_world], null),el);
 });
 erdos.unicode.core.mount_app_element = (function erdos$unicode$core$mount_app_element(){
-var temp__5720__auto__ = erdos.unicode.core.get_app_element();
-if(cljs.core.truth_(temp__5720__auto__)){
-var el = temp__5720__auto__;
-return erdos.unicode.core.mount(el);
-} else {
+var G__14360 = goog.dom.getElement("app");
+if((G__14360 == null)){
 return null;
+} else {
+return erdos.unicode.core.mount(G__14360);
 }
 });
 erdos.unicode.core.mount_app_element();
+var h_14361 = document.location.hash;
+var i_14362 = h_14361.indexOf("text=");
+if((i_14362 > (0))){
+var text_14363 = decodeURIComponent(cljs.core.subs.cljs$core$IFn$_invoke$arity$2(h_14361,(i_14362 + (5))));
+console.log(text_14363);
+
+cljs.core.reset_BANG_(erdos.unicode.core.input_text,text_14363);
+
+console.log(cljs.core.deref(erdos.unicode.core.input_text));
+} else {
+}
 erdos.unicode.core.on_reload = (function erdos$unicode$core$on_reload(){
 return erdos.unicode.core.mount_app_element();
 });
