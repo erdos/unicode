@@ -1,4 +1,5 @@
-(ns erdos.unicode.data)
+(ns erdos.unicode.data
+  (:require [reagent.core :refer [atom]]))
 
 ;; source: https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt
 
@@ -326,3 +327,21 @@ F0000..FFFFF; Supplementary Private Use Area-A
 
 (defn group [c]
   (some (fn [[from to name]] (when (<= from c to) name)) group-rows))
+
+(def id-name-map (atom {}))
+
+(def table
+  (let [url "https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt"]
+    (-> (js/fetch (str "https://jsonp.afeld.me/?url=" (js/encodeURIComponent (str url)))
+                  (clj->js {"metod" "GET"}))
+        (.then (fn [x] (.text x)))
+        (.then (fn [x]
+                 (for [line (clojure.string/split-lines x)]
+                   (-> (vec (clojure.string/split line ";"))
+                       (update 0 #(js/parseInt % 16))))))
+        (.then (fn [items]
+                 (reset! id-name-map
+                         (zipmap (map first items) (map second items)))
+                 )))))
+
+(defn get-name [code] (get @id-name-map code))

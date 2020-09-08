@@ -65,15 +65,11 @@
                         (repeat (dec (count cs)) nil))))))
 
 (defn hello-world []
-  [:div
-   [:div {:style {:display :flex :margin-bottom "2em"}}
-    [:div {:style {:width "60%"}}
-     [textarea input-text]]
-    [:div {:style {:width "40%"}}
-     [normal-forms]]
-    ]
+  [:main
+   [:div.control
+    [:div [textarea input-text]]
+    [:div [normal-forms]]]
    [:div
-
     [:table {:width "100%"}
      [:thead
       [:tr
@@ -82,18 +78,17 @@
        [:th "name"]
        [:th "group"]]]
      [:tbody
-      (for [[idx c group]
-            (map vector (range) @input-text (text-groups @input-text))]
-        [:tr {:key idx}
-         [:td (str c)]
-         [:td (char->hex c)]
-         [:td "latin letter " c]
-         (when group
-           [:td {:rowspan (second group)} (first group)])
-         ])]]
+      (doall
+       (for [[idx c group]
+             (map vector (range) @input-text (text-groups @input-text))]
+         [:tr {:key idx}
+          [:td (str c)]
+          [:td (char->hex c)]
+          [:td (data/get-name (.charCodeAt c 0))]
+          (when group
+            [:td {:rowSpan (second group)} (first group)])
+          ]))]]
     ]])
-
-()
 
 (defn mount [el]
   (rdom/render [hello-world] el))
