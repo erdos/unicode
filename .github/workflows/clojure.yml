@@ -11,6 +11,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-${{ hashFiles('project.clj') }}
     - name: Install dependencies
       run: lein deps
     - name: Run tests
