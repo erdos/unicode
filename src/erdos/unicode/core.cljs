@@ -5,10 +5,12 @@
    [reagent.dom :as rdom]
    [erdos.unicode.data :as data]))
 
-(defn get-app-element []
-  (gdom/getElement "app"))
-
 (def input-text (atom "Hello Amélie!"))
+
+(add-watch input-text :reload
+           (fn [_ _ old neu]
+             (when (not= old neu)
+               (set! (.. js/window -location -hash) (str "text=" (js/encodeURIComponent (str neu)))))))
 
 (def normalized-state
   (reagent.core/track
@@ -29,7 +31,7 @@
 (defn- textarea [input-text]
   [:textarea
    {:on-change     (fn [t] (reset! input-text (.-value (.-target t))))
-    :default-value @input-text}])
+    :value @input-text}])
 
 (defn char->hex [c]
   (-> (str c)
@@ -94,12 +96,20 @@
   (rdom/render [hello-world] el))
 
 (defn mount-app-element []
-  (when-let [el (get-app-element)]
-    (mount el)))
+  (some-> (gdom/getElement "app") (mount)))
 
 ;; conditionally start your application based on the presence of an "app" element
 ;; this is particularly helpful for testing this ns without launching the app
 (mount-app-element)
+
+
+(let [h (-> js/document .-location .-hash)
+      i (.indexOf h "text=")]
+  (when (pos? i)
+    (let [text (js/decodeURIComponent (subs h (+ i 5)))]
+      (.log js/console text)
+      (reset! input-text text)
+      (.log js/console @input-text))))
 
 ;; specify reload hook with ^;after-load metadata
 (defn ^:after-load on-reload []
