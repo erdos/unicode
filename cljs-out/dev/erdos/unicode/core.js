@@ -30,7 +30,7 @@ erdos.unicode.core.char__GT_hex = (function erdos$unicode$core$char__GT_hex(c){
 return ["0x",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.str.cljs$core$IFn$_invoke$arity$1(c).charCodeAt((0)).toString((16)).toUpperCase().padStart((4),"0"))].join('');
 });
 erdos.unicode.core.normal_forms = (function erdos$unicode$core$normal_forms(){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$box,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$b,"Normal forms"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$ul,cljs.core.doall.cljs$core$IFn$_invoke$arity$1((function (){var iter__4529__auto__ = (function erdos$unicode$core$normal_forms_$_iter__14334(s__14335){
+return new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$box,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$b,"Normal forms"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$ul,cljs.core.doall.cljs$core$IFn$_invoke$arity$1((function (){var iter__4529__auto__ = (function erdos$unicode$core$normal_forms_$_iter__14334(s__14335){
 return (new cljs.core.LazySeq(null,(function (){
 var s__14335__$1 = s__14335;
 while(true){
@@ -94,7 +94,15 @@ break;
 }),null,null));
 });
 return iter__4529__auto__(new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["NFC",cljs.core.cst$kw$nfc,cljs.core.cst$kw$nfc_QMARK_], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["NFD",cljs.core.cst$kw$nfd,cljs.core.cst$kw$nfd_QMARK_], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["NFKC",cljs.core.cst$kw$nfkc,cljs.core.cst$kw$nfkc_QMARK_], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["NFKD",cljs.core.cst$kw$nfkd,cljs.core.cst$kw$nfkd_QMARK_], null)], null));
-})())], null)], null);
+})())], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$b,"Convert"], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$br], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$up,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,(function (){
+return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$2(erdos.unicode.core.input_text,(function (a){
+return cljs.core.str.cljs$core$IFn$_invoke$arity$1(a).toUpperCase();
+}));
+})], null),"Uppercase"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,(function (){
+return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$2(erdos.unicode.core.input_text,(function (a){
+return cljs.core.str.cljs$core$IFn$_invoke$arity$1(a).toLowerCase();
+}));
+})], null),"Lowecase"], null)], null)], null)], null);
 });
 erdos.unicode.core.text_groups = (function erdos$unicode$core$text_groups(input_text){
 return cljs.core.mapcat.cljs$core$IFn$_invoke$arity$variadic((function (cs){
@@ -166,17 +174,21 @@ return erdos.unicode.core.mount(G__14360);
 }
 });
 erdos.unicode.core.mount_app_element();
-var h_14361 = document.location.hash;
-var i_14362 = h_14361.indexOf("text=");
-if((i_14362 > (0))){
-var text_14363 = decodeURIComponent(cljs.core.subs.cljs$core$IFn$_invoke$arity$2(h_14361,(i_14362 + (5))));
-console.log(text_14363);
+erdos.unicode.core.hash_changed = (function erdos$unicode$core$hash_changed(){
+var h = document.location.hash;
+var i = h.indexOf("text=");
+if((i > (0))){
+var text = decodeURIComponent(cljs.core.subs.cljs$core$IFn$_invoke$arity$2(h,(i + (5))));
+console.log(text);
 
-cljs.core.reset_BANG_(erdos.unicode.core.input_text,text_14363);
+cljs.core.reset_BANG_(erdos.unicode.core.input_text,text);
 
-console.log(cljs.core.deref(erdos.unicode.core.input_text));
+return console.log(cljs.core.deref(erdos.unicode.core.input_text));
 } else {
+return null;
 }
+});
+(window.onhashchange = erdos.unicode.core.hash_changed);
 erdos.unicode.core.on_reload = (function erdos$unicode$core$on_reload(){
 return erdos.unicode.core.mount_app_element();
 });
