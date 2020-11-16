@@ -56,7 +56,11 @@
         (if (p @normalized-state)
           [:span (str "Input is in " txt " form.")]
           [:button {:on-click #(reset! input-text (k @normalized-state))}
-           (str "Convert to " txt)])]))]])
+           (str "Convert to " txt)])]))]
+   [:b "Convert"] [:br]
+   [:up
+    [:li [:button {:on-click #(swap! input-text (fn [a] (.toUpperCase (str a))))} "Uppercase"]]
+    [:li [:button {:on-click #(swap! input-text (fn [a] (.toLowerCase (str a))))} "Lowecase"]]]])
 
 (defn text-groups [input-text]
   (->> input-text
@@ -102,14 +106,17 @@
 ;; this is particularly helpful for testing this ns without launching the app
 (mount-app-element)
 
+(defn hash-changed []
+  (let [h (-> js/document .-location .-hash)
+        i (.indexOf h "text=")]
+    (when (pos? i)
+      (let [text (js/decodeURIComponent (subs h (+ i 5)))]
+        (.log js/console text)
+        (reset! input-text text)
+        (.log js/console @input-text)))))
 
-(let [h (-> js/document .-location .-hash)
-      i (.indexOf h "text=")]
-  (when (pos? i)
-    (let [text (js/decodeURIComponent (subs h (+ i 5)))]
-      (.log js/console text)
-      (reset! input-text text)
-      (.log js/console @input-text))))
+(set! (.-onhashchange js/window) hash-changed)
+hash-changed
 
 ;; specify reload hook with ^;after-load metadata
 (defn ^:after-load on-reload []
