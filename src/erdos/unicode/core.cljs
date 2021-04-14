@@ -3,7 +3,8 @@
    [goog.dom :as gdom]
    [reagent.core :as reagent :refer [atom]]
    [reagent.dom :as rdom]
-   [erdos.unicode.data :as data]))
+   [erdos.unicode.data :as data]
+   [clojure.string :refer [includes?]]))
 
 (def input-text (atom "Hello Amélie!"))
 
@@ -80,17 +81,19 @@
      [:thead
       [:tr
        [:th]
-       [:th]
-       [:th "name"]
-       [:th "group"]]]
+       [:th "Code"]
+       [:th "Name"]
+       [:th "Group"]]]
      [:tbody
       (doall
-       (for [[idx c group]
-             (map vector (range) @input-text (text-groups @input-text))]
+       (for [[idx c group] (map vector (range) @input-text (text-groups @input-text))
+             :let [name (data/get-name (.charCodeAt c 0))]]
          [:tr {:key idx}
-          [:td (str c)]
+          [:td (if (some-> name (includes? "COMBINING"))
+                 (str "◌" c)
+                 (str c))]
           [:td (char->hex c)]
-          [:td (data/get-name (.charCodeAt c 0))]
+          [:td name]
           (when group
             [:td {:rowSpan (second group)} (first group)])
           ]))]]
