@@ -6,6 +6,7 @@ goog.require('goog.dom');
 goog.require('reagent.core');
 goog.require('reagent.dom');
 goog.require('erdos.unicode.data');
+goog.require('clojure.string');
 erdos.unicode.core.input_text = reagent.core.atom.cljs$core$IFn$_invoke$arity$1("Hello Am\u00E9lie!");
 cljs.core.add_watch(erdos.unicode.core.input_text,cljs.core.cst$kw$reload,(function (_,___$1,old,neu){
 if(cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(old,neu)){
@@ -112,7 +113,7 @@ return erdos.unicode.data.group(cljs.core.str.cljs$core$IFn$_invoke$arity$1(c).c
 }),input_text))], 0));
 });
 erdos.unicode.core.hello_world = (function erdos$unicode$core$hello_world(){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$main,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$control,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [erdos.unicode.core.textarea,erdos.unicode.core.input_text], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [erdos.unicode.core.normal_forms], null)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$table,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$width,"100%"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$thead,new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$tr,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$th], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$th], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$th,"name"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$th,"group"], null)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$tbody,cljs.core.doall.cljs$core$IFn$_invoke$arity$1((function (){var iter__4529__auto__ = (function erdos$unicode$core$hello_world_$_iter__14349(s__14350){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$main,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$control,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [erdos.unicode.core.textarea,erdos.unicode.core.input_text], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [erdos.unicode.core.normal_forms], null)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$table,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$width,"100%"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$thead,new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$tr,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$th], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$th,"Code"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$th,"Name"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$th,"Group"], null)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$tbody,cljs.core.doall.cljs$core$IFn$_invoke$arity$1((function (){var iter__4529__auto__ = (function erdos$unicode$core$hello_world_$_iter__14349(s__14350){
 return (new cljs.core.LazySeq(null,(function (){
 var s__14350__$1 = s__14350;
 while(true){
@@ -130,10 +131,17 @@ var vec__14353 = cljs.core._nth.cljs$core$IFn$_invoke$arity$2(c__4527__auto__,i_
 var idx = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14353,(0),null);
 var c = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14353,(1),null);
 var group = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14353,(2),null);
-cljs.core.chunk_append(b__14352,new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$tr,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,idx], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,cljs.core.str.cljs$core$IFn$_invoke$arity$1(c)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,erdos.unicode.core.char__GT_hex(c)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,erdos.unicode.data.get_name(c.charCodeAt((0)))], null),(cljs.core.truth_(group)?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$rowSpan,cljs.core.second(group)], null),cljs.core.first(group)], null):null)], null));
+var name = erdos.unicode.data.get_name(c.charCodeAt((0)));
+cljs.core.chunk_append(b__14352,new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$tr,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,idx], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,(cljs.core.truth_((function (){var G__14356 = name;
+if((G__14356 == null)){
+return null;
+} else {
+return clojure.string.includes_QMARK_(G__14356,"COMBINING");
+}
+})())?["\u25CC",cljs.core.str.cljs$core$IFn$_invoke$arity$1(c)].join(''):cljs.core.str.cljs$core$IFn$_invoke$arity$1(c))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,erdos.unicode.core.char__GT_hex(c)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,name], null),(cljs.core.truth_(group)?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$rowSpan,cljs.core.second(group)], null),cljs.core.first(group)], null):null)], null));
 
-var G__14359 = (i__14351 + (1));
-i__14351 = G__14359;
+var G__14361 = (i__14351 + (1));
+i__14351 = G__14361;
 continue;
 } else {
 return true;
@@ -146,11 +154,18 @@ return cljs.core.chunk_cons(cljs.core.chunk(b__14352),erdos$unicode$core$hello_w
 return cljs.core.chunk_cons(cljs.core.chunk(b__14352),null);
 }
 } else {
-var vec__14356 = cljs.core.first(s__14350__$2);
-var idx = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14356,(0),null);
-var c = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14356,(1),null);
-var group = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14356,(2),null);
-return cljs.core.cons(new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$tr,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,idx], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,cljs.core.str.cljs$core$IFn$_invoke$arity$1(c)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,erdos.unicode.core.char__GT_hex(c)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,erdos.unicode.data.get_name(c.charCodeAt((0)))], null),(cljs.core.truth_(group)?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$rowSpan,cljs.core.second(group)], null),cljs.core.first(group)], null):null)], null),erdos$unicode$core$hello_world_$_iter__14349(cljs.core.rest(s__14350__$2)));
+var vec__14357 = cljs.core.first(s__14350__$2);
+var idx = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14357,(0),null);
+var c = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14357,(1),null);
+var group = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14357,(2),null);
+var name = erdos.unicode.data.get_name(c.charCodeAt((0)));
+return cljs.core.cons(new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$tr,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,idx], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,(cljs.core.truth_((function (){var G__14360 = name;
+if((G__14360 == null)){
+return null;
+} else {
+return clojure.string.includes_QMARK_(G__14360,"COMBINING");
+}
+})())?["\u25CC",cljs.core.str.cljs$core$IFn$_invoke$arity$1(c)].join(''):cljs.core.str.cljs$core$IFn$_invoke$arity$1(c))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,erdos.unicode.core.char__GT_hex(c)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,name], null),(cljs.core.truth_(group)?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$td,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$rowSpan,cljs.core.second(group)], null),cljs.core.first(group)], null):null)], null),erdos$unicode$core$hello_world_$_iter__14349(cljs.core.rest(s__14350__$2)));
 }
 } else {
 return null;
@@ -166,11 +181,11 @@ erdos.unicode.core.mount = (function erdos$unicode$core$mount(el){
 return reagent.dom.render.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [erdos.unicode.core.hello_world], null),el);
 });
 erdos.unicode.core.mount_app_element = (function erdos$unicode$core$mount_app_element(){
-var G__14360 = goog.dom.getElement("app");
-if((G__14360 == null)){
+var G__14362 = goog.dom.getElement("app");
+if((G__14362 == null)){
 return null;
 } else {
-return erdos.unicode.core.mount(G__14360);
+return erdos.unicode.core.mount(G__14362);
 }
 });
 erdos.unicode.core.mount_app_element();
